@@ -1,0 +1,612 @@
+diff --git a/node_modules/react-native-video/android-exoplayer/build.gradle b/node_modules/react-native-video/android-exoplayer/build.gradle
+index d005a58..048b96a 100644
+--- a/node_modules/react-native-video/android-exoplayer/build.gradle
++++ b/node_modules/react-native-video/android-exoplayer/build.gradle
+@@ -26,9 +26,14 @@ android {
+     }
+ }
+ 
++repositories {
++    // Remove this repository line after google releases to google() or mavenCentral()
++    maven { url "https://dl.google.com/android/maven2" }
++}
++
+ dependencies {
+     implementation "com.facebook.react:react-native:${safeExtGet('reactNativeVersion', '+')}"
+-    implementation('com.google.android.exoplayer:exoplayer:2.13.2') {
++    implementation('com.google.android.exoplayer:exoplayer:2.13.3') {
+         exclude group: 'com.android.support'
+     }
+ 
+@@ -37,7 +42,7 @@ dependencies {
+     implementation "androidx.core:core:1.1.0"
+     implementation "androidx.media:media:1.1.0"
+ 
+-    implementation('com.google.android.exoplayer:extension-okhttp:2.13.2') {
++    implementation('com.google.android.exoplayer:extension-okhttp:2.13.3') {
+         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+     }
+     implementation 'com.squareup.okhttp3:okhttp:${OKHTTP_VERSION}'
+diff --git a/node_modules/react-native-video/android-exoplayer/build/generated/source/buildConfig/debug/com/brentvatne/react/BuildConfig.java b/node_modules/react-native-video/android-exoplayer/build/generated/source/buildConfig/debug/com/brentvatne/react/BuildConfig.java
+new file mode 100644
+index 0000000..b769842
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/generated/source/buildConfig/debug/com/brentvatne/react/BuildConfig.java
+@@ -0,0 +1,10 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package com.brentvatne.react;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "com.brentvatne.react";
++  public static final String BUILD_TYPE = "debug";
++}
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..a29d238
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.brentvatne.react" >
++
++    <uses-sdk
++        android:minSdkVersion="21"
++        android:targetSdkVersion="30" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json b/node_modules/react-native-video/android-exoplayer/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json
+new file mode 100644
+index 0000000..28004c3
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json
+@@ -0,0 +1,16 @@
++{
++  "version": 2,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.brentvatne.react",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/aar_metadata/debug/aar-metadata.properties b/node_modules/react-native-video/android-exoplayer/build/intermediates/aar_metadata/debug/aar-metadata.properties
+new file mode 100644
+index 0000000..d8560bd
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/aar_metadata/debug/aar-metadata.properties
+@@ -0,0 +1,2 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/annotation_processor_list/debug/annotationProcessors.json b/node_modules/react-native-video/android-exoplayer/build/intermediates/annotation_processor_list/debug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/annotation_processor_list/debug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/compiled_local_resources/debug/out/layout_exo_player_control_view.xml.flat b/node_modules/react-native-video/android-exoplayer/build/intermediates/compiled_local_resources/debug/out/layout_exo_player_control_view.xml.flat
+new file mode 100644
+index 0000000..2e73759
+Binary files /dev/null and b/node_modules/react-native-video/android-exoplayer/build/intermediates/compiled_local_resources/debug/out/layout_exo_player_control_view.xml.flat differ
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/debug-mergeJavaRes/merge-state b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/debug-mergeJavaRes/merge-state
+new file mode 100644
+index 0000000..d5ff387
+Binary files /dev/null and b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/debug-mergeJavaRes/merge-state differ
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..bbcb5e5
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/debug/jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/mergeDebugShaders/merger.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/mergeDebugShaders/merger.xml
+new file mode 100644
+index 0000000..9213d2d
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/mergeDebugShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/shaders"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/debug/shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugAssets/merger.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugAssets/merger.xml
+new file mode 100644
+index 0000000..170d379
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/assets"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/build/intermediates/shader_assets/debug/out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/debug/assets"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/compile-file-map.properties b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..6c686f3
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1,2 @@
++#Wed Dec 29 09:04:11 MYT 2021
++/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/res/layout/exo_player_control_view.xml=/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/layout/exo_player_control_view.xml
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml
+new file mode 100644
+index 0000000..69801a4
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
++    <string name="error_drm_not_supported">Protected content not supported on API levels below 18</string>
++    <string name="error_drm_unknown">An unknown DRM error occurred</string>
++    <string name="error_drm_unsupported_scheme">This device does not support the required DRM scheme</string>
++    <string name="error_instantiating_decoder">Unable to instantiate decoder <ns1:g id="decoder_name">%1$s</ns1:g></string>
++    <string name="error_no_decoder">This device does not provide a decoder for <ns1:g id="mime_type">%1$s</ns1:g></string>
++    <string name="error_no_secure_decoder">This device does not provide a secure decoder for <ns1:g id="mime_type">%1$s</ns1:g></string>
++    <string name="error_querying_decoders">Unable to query device decoders</string>
++    <string name="unrecognized_media_format">Unrecognized media format</string>
++</resources>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/merger.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..ec1245d
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/incremental/packageDebugResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3" xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/res"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/build/generated/res/rs/debug"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/res"><file name="exo_player_control_view" path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/res/layout/exo_player_control_view.xml" qualifiers="" type="layout"/><file path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/res/values/strings.xml" qualifiers=""><string name="error_no_decoder">This device does not provide a decoder for <ns1:g id="mime_type">%1$s</ns1:g></string><string name="error_no_secure_decoder">This device does not provide a secure decoder for <ns1:g id="mime_type">%1$s</ns1:g></string><string name="error_querying_decoders">Unable to query device decoders</string><string name="error_instantiating_decoder">Unable to instantiate decoder <ns1:g id="decoder_name">%1$s</ns1:g></string><string name="error_drm_not_supported">Protected content not supported on API levels below 18</string><string name="unrecognized_media_format">Unrecognized media format</string><string name="error_drm_unsupported_scheme">This device does not support the required DRM scheme</string><string name="error_drm_unknown">An unknown DRM error occurred</string></file></source><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/build/generated/res/rs/debug"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/debug/res"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/local_only_symbol_list/debug/R-def.txt b/node_modules/react-native-video/android-exoplayer/build/intermediates/local_only_symbol_list/debug/R-def.txt
+new file mode 100644
+index 0000000..25a5b2b
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/local_only_symbol_list/debug/R-def.txt
+@@ -0,0 +1,12 @@
++R_DEF: Internal format may change without notice
++local
++id exo_play_pause_container
++layout exo_player_control_view
++string error_drm_not_supported
++string error_drm_unknown
++string error_drm_unsupported_scheme
++string error_instantiating_decoder
++string error_no_decoder
++string error_no_secure_decoder
++string error_querying_decoders
++string unrecognized_media_format
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt b/node_modules/react-native-video/android-exoplayer/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..ae1f43d
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,11 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="com.brentvatne.react" >
++4
++5    <uses-sdk
++6        android:minSdkVersion="21"
++6-->/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++7        android:targetSdkVersion="30" />
++7-->/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++8
++9</manifest>
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/merged_java_res/debug/out.jar b/node_modules/react-native-video/android-exoplayer/build/intermediates/merged_java_res/debug/out.jar
+new file mode 100644
+index 0000000..15cb0ec
+Binary files /dev/null and b/node_modules/react-native-video/android-exoplayer/build/intermediates/merged_java_res/debug/out.jar differ
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/merged_manifest/debug/AndroidManifest.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/merged_manifest/debug/AndroidManifest.xml
+new file mode 100644
+index 0000000..a29d238
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/merged_manifest/debug/AndroidManifest.xml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.brentvatne.react" >
++
++    <uses-sdk
++        android:minSdkVersion="21"
++        android:targetSdkVersion="30" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/navigation_json/debug/navigation.json b/node_modules/react-native-video/android-exoplayer/build/intermediates/navigation_json/debug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/navigation_json/debug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_manifests/debug/output-metadata.json b/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_manifests/debug/output-metadata.json
+new file mode 100644
+index 0000000..62c8a6c
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_manifests/debug/output-metadata.json
+@@ -0,0 +1,16 @@
++{
++  "version": 2,
++  "artifactType": {
++    "type": "PACKAGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.brentvatne.react",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "outputFile": "../../merged_manifest/debug/AndroidManifest.xml"
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/layout/exo_player_control_view.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/layout/exo_player_control_view.xml
+new file mode 100644
+index 0000000..becee6a
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/layout/exo_player_control_view.xml
+@@ -0,0 +1,76 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:layout_gravity="bottom"
++    android:layoutDirection="ltr"
++    android:background="#CC000000"
++    android:orientation="vertical">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:gravity="center"
++        android:paddingTop="4dp"
++        android:orientation="horizontal">
++
++        <ImageButton android:id="@id/exo_prev"
++            style="@style/ExoMediaButton.Previous"/>
++
++        <ImageButton android:id="@id/exo_rew"
++            style="@style/ExoMediaButton.Rewind"/>
++        <FrameLayout
++            android:id="@+id/exo_play_pause_container"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_gravity="center">
++            <ImageButton android:id="@id/exo_play"
++                style="@style/ExoMediaButton.Play"/>
++
++            <ImageButton android:id="@id/exo_pause"
++                style="@style/ExoMediaButton.Pause"/>
++        </FrameLayout>
++
++        <ImageButton android:id="@id/exo_ffwd"
++            style="@style/ExoMediaButton.FastForward"/>
++
++        <ImageButton android:id="@id/exo_next"
++            style="@style/ExoMediaButton.Next"/>
++
++    </LinearLayout>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="4dp"
++        android:gravity="center_vertical"
++        android:orientation="horizontal">
++
++        <TextView android:id="@id/exo_position"
++            android:layout_width="50dp"
++            android:layout_height="wrap_content"
++            android:textSize="14sp"
++            android:textStyle="bold"
++            android:paddingLeft="4dp"
++            android:paddingRight="4dp"
++            android:includeFontPadding="false"
++            android:textColor="#FFBEBEBE"/>
++
++        <com.google.android.exoplayer2.ui.DefaultTimeBar
++            android:id="@id/exo_progress"
++            android:layout_width="0dp"
++            android:layout_weight="1"
++            android:layout_height="26dp"/>
++
++        <TextView android:id="@id/exo_duration"
++            android:layout_width="50dp"
++            android:layout_height="wrap_content"
++            android:textSize="14sp"
++            android:textStyle="bold"
++            android:paddingLeft="4dp"
++            android:paddingRight="4dp"
++            android:includeFontPadding="false"
++            android:textColor="#FFBEBEBE"/>
++    </LinearLayout>
++
++</LinearLayout>
+diff --git a/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/values/values.xml b/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/values/values.xml
+new file mode 100644
+index 0000000..69801a4
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/intermediates/packaged_res/debug/values/values.xml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
++    <string name="error_drm_not_supported">Protected content not supported on API levels below 18</string>
++    <string name="error_drm_unknown">An unknown DRM error occurred</string>
++    <string name="error_drm_unsupported_scheme">This device does not support the required DRM scheme</string>
++    <string name="error_instantiating_decoder">Unable to instantiate decoder <ns1:g id="decoder_name">%1$s</ns1:g></string>
++    <string name="error_no_decoder">This device does not provide a decoder for <ns1:g id="mime_type">%1$s</ns1:g></string>
++    <string name="error_no_secure_decoder">This device does not provide a secure decoder for <ns1:g id="mime_type">%1$s</ns1:g></string>
++    <string name="error_querying_decoders">Unable to query device decoders</string>
++    <string name="unrecognized_media_format">Unrecognized media format</string>
++</resources>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android-exoplayer/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/react-native-video/android-exoplayer/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..e2e5cff
+--- /dev/null
++++ b/node_modules/react-native-video/android-exoplayer/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,25 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml:1:1-3:12
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml:1:1-3:12
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml:1:1-3:12
++	package
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml:2:11-41
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++	xmlns:android
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml:1:11-69
++uses-sdk
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android-exoplayer/src/main/AndroidManifest.xml
+diff --git a/node_modules/react-native-video/android/build/generated/source/buildConfig/debug/com/brentvatne/react/BuildConfig.java b/node_modules/react-native-video/android/build/generated/source/buildConfig/debug/com/brentvatne/react/BuildConfig.java
+new file mode 100644
+index 0000000..b769842
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/generated/source/buildConfig/debug/com/brentvatne/react/BuildConfig.java
+@@ -0,0 +1,10 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package com.brentvatne.react;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "com.brentvatne.react";
++  public static final String BUILD_TYPE = "debug";
++}
+diff --git a/node_modules/react-native-video/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml b/node_modules/react-native-video/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..a29d238
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.brentvatne.react" >
++
++    <uses-sdk
++        android:minSdkVersion="21"
++        android:targetSdkVersion="30" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json b/node_modules/react-native-video/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json
+new file mode 100644
+index 0000000..28004c3
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json
+@@ -0,0 +1,16 @@
++{
++  "version": 2,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.brentvatne.react",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/aar_metadata/debug/aar-metadata.properties b/node_modules/react-native-video/android/build/intermediates/aar_metadata/debug/aar-metadata.properties
+new file mode 100644
+index 0000000..d8560bd
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/aar_metadata/debug/aar-metadata.properties
+@@ -0,0 +1,2 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
+diff --git a/node_modules/react-native-video/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json b/node_modules/react-native-video/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/annotation_processor_list/debug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state b/node_modules/react-native-video/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state
+new file mode 100644
+index 0000000..d5ff387
+Binary files /dev/null and b/node_modules/react-native-video/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state differ
+diff --git a/node_modules/react-native-video/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml b/node_modules/react-native-video/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..7db791e
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/debug/jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/incremental/mergeDebugShaders/merger.xml b/node_modules/react-native-video/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+new file mode 100644
+index 0000000..441c1b6
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/shaders"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/debug/shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugAssets/merger.xml b/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugAssets/merger.xml
+new file mode 100644
+index 0000000..fd01f7b
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/assets"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/build/intermediates/shader_assets/debug/out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/debug/assets"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugResources/compile-file-map.properties b/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..8fc4822
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1 @@
++#Wed Dec 29 08:58:45 MYT 2021
+diff --git a/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugResources/merger.xml b/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..d919f5e
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/incremental/packageDebugResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/res"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/build/generated/res/rs/debug"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/res"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/build/generated/res/rs/debug"/><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/debug/res"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/local_only_symbol_list/debug/R-def.txt b/node_modules/react-native-video/android/build/intermediates/local_only_symbol_list/debug/R-def.txt
+new file mode 100644
+index 0000000..78ac5b8
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/local_only_symbol_list/debug/R-def.txt
+@@ -0,0 +1,2 @@
++R_DEF: Internal format may change without notice
++local
+diff --git a/node_modules/react-native-video/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt b/node_modules/react-native-video/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..4699504
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,11 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="com.brentvatne.react" >
++4
++5    <uses-sdk
++6        android:minSdkVersion="21"
++6-->/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++7        android:targetSdkVersion="30" />
++7-->/Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++8
++9</manifest>
+diff --git a/node_modules/react-native-video/android/build/intermediates/merged_java_res/debug/out.jar b/node_modules/react-native-video/android/build/intermediates/merged_java_res/debug/out.jar
+new file mode 100644
+index 0000000..15cb0ec
+Binary files /dev/null and b/node_modules/react-native-video/android/build/intermediates/merged_java_res/debug/out.jar differ
+diff --git a/node_modules/react-native-video/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml b/node_modules/react-native-video/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml
+new file mode 100644
+index 0000000..a29d238
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.brentvatne.react" >
++
++    <uses-sdk
++        android:minSdkVersion="21"
++        android:targetSdkVersion="30" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/navigation_json/debug/navigation.json b/node_modules/react-native-video/android/build/intermediates/navigation_json/debug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/navigation_json/debug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/intermediates/packaged_manifests/debug/output-metadata.json b/node_modules/react-native-video/android/build/intermediates/packaged_manifests/debug/output-metadata.json
+new file mode 100644
+index 0000000..62c8a6c
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/intermediates/packaged_manifests/debug/output-metadata.json
+@@ -0,0 +1,16 @@
++{
++  "version": 2,
++  "artifactType": {
++    "type": "PACKAGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.brentvatne.react",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "outputFile": "../../merged_manifest/debug/AndroidManifest.xml"
++    }
++  ]
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-video/android/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/react-native-video/android/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..b73756e
+--- /dev/null
++++ b/node_modules/react-native-video/android/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,25 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml:1:1-3:12
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml:1:1-3:12
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml:1:1-3:12
++	package
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml:2:11-41
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++	xmlns:android
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml:1:11-69
++uses-sdk
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++		ADDED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
++		INJECTED from /Users/yingkiattiong/byProgrammers/YouTube/LetsCodeReactNative/SourceCode/LCRN/LCRN17/LCRN17-online-learning-app/node_modules/react-native-video/android/src/main/AndroidManifest.xml
