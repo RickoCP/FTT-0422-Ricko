@@ -5,7 +5,7 @@ import {
     Image,
     TextInput,
     ActivityIndicator,
-   
+    LogBox 
 } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
@@ -23,6 +23,8 @@ import { COLORS, FONTS, SIZES, icons } from '../../constants';
 import { fetchData, fetchSearch } from '../../stores/actions/dataActions';
 import DataCard from '../../components/DataCard';
 
+LogBox.ignoreAllLogs();
+
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
 
@@ -31,7 +33,7 @@ const Search = (props) => {
 
     const [dataShow, setDataShow] = useState([]);
     const [page, setPage] = useState(1);
-    const limit = 15;
+    const [limit, setLimit] = useState(15);
     const [query, setQuery] = useState('');
     const [isScrollBegin, setIsScrollBegin] = useState(false);
     const [isAddList, setIsAddList] = useState(false);
@@ -172,6 +174,7 @@ const Search = (props) => {
                         keyExtractor={item => `BrowseCategories-${item.id}`}
                         showsHorizontalScrollIndicator={false}
                         contentContainerStyle={{
+                            flexGrow:1,
                             paddingBottom: 150,
                         }}
                         onContentSizeChange={() =>
@@ -182,10 +185,13 @@ const Search = (props) => {
                         onMomentumScrollBegin={() => {
                             setIsScrollBegin(true)
                         }}
-                        onEndReachedThreshold={0} // 0, 0.01, 0.1, 0.7, 50, 100, 700
+                        onEndReachedThreshold={0.0001} // 0, 0.01, 0.1, 0.7, 50, 100, 700
                         onEndReached={({ distanceFromEnd }) => {
+                            console.log("isScrollBegin: ",isScrollBegin)
+                            console.log("distanceFromEnd: ",distanceFromEnd)
                             if (isScrollBegin) {
                                 onEndReachedThreshold()
+                                setLimit(5)
                             }
                         }}
                         ListHeaderComponent={() => (
